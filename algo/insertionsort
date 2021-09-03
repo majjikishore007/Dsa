@@ -1,0 +1,11 @@
+Inserion sort 
+sudo code 
+arr =5 4 3 2 1 
+for j=2 to arr.length
+    key=arr[j]
+    i=j-1
+	while(i>0 && arr[i]>arr[key])
+		arr[i+1]=arr[i]
+		i=i-1
+	arr[i+1]=key;
+

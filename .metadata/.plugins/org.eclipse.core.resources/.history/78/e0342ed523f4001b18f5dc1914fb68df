@@ -1,0 +1,126 @@
+package arrays;
+
+import java.util.Arrays;
+
+public class Day3 {
+	/**
+	 * 1>print the next permutsion
+	 * 
+	 * brute force find all the permutaions and search for the given next
+	 * permutation n! for claculating al Time =O(n!
+	 * 
+	 */
+
+	public void nextPermutation(int[] nums) {
+		// get the number arr[i+1]>arr[i]
+		int i = nums.length - 2;
+		while (i >= 0 && nums[i + 1] <= nums[i]) {
+			i--;
+		}
+
+		// swap with the next highest number
+		if (i >= 0) {
+			int j = nums.length - 1;
+			while (nums[j] <= nums[i]) {
+				j--;
+			}
+			sawp(nums, i, j);
+		}
+		// reverse the subarray i+1
+		reverse(nums, i + 1);
+
+	}
+
+	private void reverse(int[] nums, int i) {
+		int j = nums.length - 1;
+		while (i <= j) {
+			int temp = nums[i];
+			nums[i] = nums[j];
+			nums[j] = temp;
+			i++;
+			j--;
+		}
+
+	}
+
+	private void sawp(int[] nums, int i, int j) {
+		int temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
+
+	}
+
+	/**
+	 * Q>2 . count the inversions
+	 * 
+	 * 
+	 */
+	static long inversionCount(long arr[], int N) {
+		System.out.println("Numver"+N);
+//		return inversionCount_hepler(arr, 0, N);
+		long res=inversionCount_hepler(arr, 0, N);
+		return res;
+	}
+
+	private static long inversionCount_hepler(long[] arr, int l, int r) {
+		// its is merge sort problem
+		// total inversions =left+right+merge
+		// Keeps track of the inversion count at a
+        // particular node of the recursion tree
+        int count = 0;
+
+        if (l < r) {
+            int m = (l + r) / 2;
+
+            // Total inversion count = left subarray count
+            // + right subarray count + merge count
+
+            // Left subarray count
+            count += inversionCount_hepler(arr, l, m);
+
+            // Right subarray count
+            count += inversionCount_hepler(arr, m + 1, r);
+
+            // Merge count
+            count += mergeAndCount(arr, l, m, r);
+        }
+
+        return count;
+	}
+
+	private static long mergeAndCount(long[] arr, int low, int mid, int high) {
+		// left subarray
+		long[] left = Arrays.copyOfRange(arr, low, mid+1);
+		// right subarry
+		long[] right = Arrays.copyOfRange(arr, mid+1, high+1);
+
+		// mergeing
+		int i = 0, j = 0, k = low, count = 0;
+		while (i < left.length && j < right.length) {
+			System.out.println("heloo");
+			if (left[i] <= right[j]) {
+				arr[k++] = left[i++];
+			} else {
+				arr[k++] = right[j++];
+				count += (mid+1) - (low + i);
+			}
+
+		}
+
+		while (i < left.length) {
+			arr[k++] = left[i++];
+		}
+		while (j < right.length) {
+			arr[k++] = right[j++];
+		}
+
+		return count;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 long[] arr = { 1, 20, 6, 4, 5 };
+		 System.out.println(inversionCount(arr, arr.length-1));
+	}
+
+}

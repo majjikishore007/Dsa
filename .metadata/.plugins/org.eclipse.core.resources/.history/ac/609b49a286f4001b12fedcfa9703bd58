@@ -1,0 +1,184 @@
+package arrays;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+
+class ZippedIterator {
+	Queue<Integer> que = new LinkedList<>();
+
+	public ZippedIterator(int[] a, int[] b) {
+		int i = 0, j = 0;
+		while (i < a.length && j < b.length) {
+			que.add(a[i++]);
+			que.add(b[j++]);
+		}
+		while (i < a.length) {
+			que.add(a[i++]);
+		}
+		while (j < a.length) {
+			que.add(a[j++]);
+		}
+	}
+
+	public int next() {
+		if(hasnext()) {
+			que.poll();
+		}
+		return 0;
+	}
+
+	public boolean hasnext() {
+		return que.isEmpty();
+	}
+}
+
+public class Day3 {
+	/**
+	 * 1>print the next permutsion
+	 * 
+	 * brute force find all the permutaions and search for the given next
+	 * permutation n! for claculating al Time =O(n!
+	 * 
+	 */
+	  public int solve(int[] nums, int k, int target) {
+	        int i=0,j=0;
+	        int count=0;
+	        int avg=0;
+	        while(j<nums.length) {
+	        	if(k-->0) {
+	        		avg=nums[j++];
+	        	}
+	        	else {
+	        		i++;
+		        	j=i;
+	        	}
+	        }
+	    }
+	public void nextPermutation(int[] nums) {
+		// get the number arr[i+1]>arr[i]
+		int i = nums.length - 2;
+		while (i >= 0 && nums[i + 1] <= nums[i]) {
+			i--;
+		}
+
+		// swap with the next highest number
+		if (i >= 0) {
+			int j = nums.length - 1;
+			while (nums[j] <= nums[i]) {
+				j--;
+			}
+			sawp(nums, i, j);
+		}
+		// reverse the subarray i+1
+		reverse(nums, i + 1);
+
+	}
+
+	private void reverse(int[] nums, int i) {
+		int j = nums.length - 1;
+		while (i <= j) {
+			int temp = nums[i];
+			nums[i] = nums[j];
+			nums[j] = temp;
+			i++;
+			j--;
+		}
+
+	}
+
+	private void sawp(int[] nums, int i, int j) {
+		int temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
+
+	}
+
+	/**
+	 * Q>2 . count the inversions
+	 * 
+	 * 
+	 */
+	static long inversionCount(long arr[], long N) {
+		System.out.println("Numver" + N);
+//		return inversionCount_hepler(arr, 0, N);
+		long res = inversionCount_hepler(arr, 0, N);
+		return res;
+	}
+
+	private static long inversionCount_hepler(long[] arr, long l, long r) {
+		int count = 0;
+		if (l < r) {
+			long mid = (l + r) / 2;
+
+			// left
+			count += inversionCount_hepler(arr, l, mid);
+
+			count += inversionCount_hepler(arr, mid + 1, r);
+
+			count += mergeAndCount(arr, l, mid, r);
+
+		}
+		return count;
+	}
+
+	private static long mergeAndCount(long[] arr, long low, long mid, long high) {
+		// left subarray
+		long[] left = Arrays.copyOfRange(arr, (int) low, (int) mid + 1);
+		// right subarry
+		long[] right = Arrays.copyOfRange(arr, (int) mid + 1, (int) high + 1);
+
+		// mergeing
+		long i = 0, j = 0, k = low, count = 0;
+		while (i < left.length && j < right.length) {
+			System.out.println("heloo");
+			if (left[(int) i] <= right[(int) j]) {
+				arr[(int) k++] = left[(int) i++];
+			} else {
+				arr[(int) k++] = right[(int) j++];
+				count += (mid + 1) - (low + i);
+			}
+
+		}
+
+		while (i < left.length) {
+			arr[(int) k++] = left[(int) i++];
+		}
+		while (j < right.length) {
+			arr[(int) k++] = right[(int) j++];
+		}
+
+		return count;
+	}
+
+	// Count pairs with given sum
+	int getPairsCount(int[] arr, int n, int k) {
+		// code here
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < n; i++) {
+			if (!map.containsKey(arr[i])) {
+				map.put(arr[i], 0);
+			}
+			map.put(arr[i], map.get(arr[i]) + 1);
+		}
+		int count = 0;
+		for (int i = 0; i < n; i++) {
+			if (map.get(k - arr[i]) != null) {
+				count += map.get(k - arr[i]);
+			}
+			if (k - arr[i] == arr[i]) {
+				count--;
+			}
+		}
+		return count / 2;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long[] arr = { 1, 20, 6, 4, 5 };
+		System.out.println(inversionCount(arr, arr.length - 1));
+	}
+
+}

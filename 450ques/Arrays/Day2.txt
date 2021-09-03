@@ -1,0 +1,5 @@
+day 2
+-------------------------------------------------------
+https://leetcode.com/problems/binary-search
+https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days

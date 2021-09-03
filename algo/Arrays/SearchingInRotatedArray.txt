@@ -1,0 +1,28 @@
+# [4,5,6,1,2,3]
+
+function searchingInRotatedArray(int arr[],int key){
+    int low=0,high=arr.lenght-1;
+
+    while(low<=high){
+        // checking conditions
+        if(arr[mid]==key){
+            return mid;
+        }
+        if(arr[low] <=arr[mid] && key <=arr[mid] && key >=arr[low]){
+            //left part of the array
+            high=mid-1;
+        }
+        else if( arr[mid]<=arr[high] && key <=arr[high] && key >=arr[mid]){
+            //right part of the array
+          low=mid+1;
+        }
+        else if(arr[high]<=arr[mid]){
+            low=mid+1;
+        }
+      else if(arr[low]>=arr[mid]){
+          high=high-1;
+      }
+    }
+
+
+}
