@@ -1,5 +1,22 @@
 day 2
 -------------------------------------------------------
 https://leetcode.com/problems/binary-search
+
+public static int getAns(int arr[],int key){
+    int low=0,high=arr.lenght-1;
+    while (low<high) {
+        int mid=(low+high)/2;
+
+        if(arr[mid]==key)
+            return mid;
+        if(arr[mid]>key)
+            high=mid-1;
+        else low=mid+1;
+    }
+    return -1;
+}
+time =O(logN) 
+space =O(1)
+
 https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days
