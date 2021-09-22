@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+/home/majjikishore007/Dsa/.metadata/.plugins/org.eclipse.jdt.core
-259975907.index
