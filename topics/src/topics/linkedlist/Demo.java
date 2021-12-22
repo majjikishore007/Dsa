@@ -84,11 +84,11 @@ class LinkedList {
 			len++;
 			temp = temp.next;
 		}
-		
-		int delI = (len - i)-1;
+
+		int delI = (len - i) - 1;
 		Node temp1 = head;
-		if(delI==-1) {
-			head=head.next;
+		if (delI == -1) {
+			head = head.next;
 			return;
 		}
 		while (delI > 0) {
@@ -100,7 +100,6 @@ class LinkedList {
 		} else {
 			temp1.next = temp1.next.next;
 		}
-		
 
 	}
 
@@ -109,48 +108,55 @@ class LinkedList {
 
 		System.out.print("[");
 		while (temp != null) {
-			System.out.print(temp.data+"," );
+			System.out.print(temp.data + ",");
 			temp = temp.next;
 		}
 		System.out.print("]");
 	}
 
 	public void oddAndEven() {
-		Node odd=null,even=null;
-		
-		Node temp=head;
-		
-		while(temp!=null) {
-			//odd
-			if(temp.data%2!=0) {
-				if(odd==null) {
-					odd=temp;
+
+		Node oddhead = null, evenhead = null;
+		Node oddend = null, evenend = null;
+		Node temp = head;
+
+		while (temp != null) {
+			// odd
+			int value = temp.data;
+			if (value % 2 != 0) {
+				if (oddhead == null) {
+					oddhead = temp;
+					oddend = oddhead;
+				} else {
+					oddend.next = temp;
+					System.out.println("temp " + temp.data);
+					oddend = oddend.next;
 				}
-				else {
-					odd.next=temp;
-					System.out.println("temp "+temp.data);
-					odd=temp;
-				}
-				
-				
+
 			}
-			if(temp.data%2==0){
-				if(even==null) {
-					even=temp;
-				}
-				else {
-					even.next=temp;
-					even=temp;
+			if (value % 2 == 0) {
+				if (evenhead == null) {
+					evenhead = temp;
+					evenend = evenhead;
+				} else {
+					evenend.next = temp;
+					evenend = evenend.next;
 				}
 			}
-			
-			temp=temp.next;
+
+			temp = temp.next;
 		}
-		System.out.println("end");
-		even.next=odd;
-		head=even;
+
+		if (evenhead == null || oddhead == null) {
+			return;
+		}
+		evenend.next = oddhead;
+		oddend.next = null;
+		head = evenhead;
+
 	}
 }
+
 public class Demo {
 	public static void main(String[] args) {
 
