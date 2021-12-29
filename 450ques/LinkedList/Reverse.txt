@@ -1,0 +1,21 @@
+function reverseList(ListNode head) {
+    if(head==null) {
+        return null;
+    }
+    ListNode curr,prev,fu;
+
+    curr = head;
+
+    while(curr.next != null) {
+        fu = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr=fu;
+    }
+    curr.next = prev;
+    return curr;
+
+}
+
+// Time complexity: O(N)
+//Space complexity: O(1)
