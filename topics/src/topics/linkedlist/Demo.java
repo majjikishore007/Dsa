@@ -271,6 +271,50 @@ class LinkedList {
 
 		return new_nodeh;
 	}
+
+	// TODO: after the searching and sorting
+	public void sort() {
+		Node temp = head;
+	}
+
+	// 1 2 3 4 3 2 1
+	public boolean isPalindrome() {
+		Node slow = head, fast = head;
+
+		while (fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+		// odd
+		if(fast!=null) {
+			slow=slow.next;
+		}
+		//even
+
+		Node curr = slow;
+		Node past = null, fut;
+		while (curr.next != null) {
+			fut = curr.next;
+			curr.next = past;
+			past = curr;
+			curr = fut;
+		}
+		curr.next=past;
+		System.out.println("past :::"+curr.data);
+		Node temp=head;
+		while(curr!=null) {
+			if(curr.data!=temp.data) {
+				return false;
+			}
+			curr=curr.next;
+			temp=temp.next;
+		}
+
+
+		return true;
+
+	}
+
 }
 
 public class Demo {
@@ -281,22 +325,24 @@ public class Demo {
 		list.add(2);
 		list.add(3);
 		list.add(4);
-		list.add(5);
-		list.add(6);
+		list.add(3);
+		list.add(2);
+		list.add(1);
 		list.print();
-		LinkedList list1 = new LinkedList();
-		
-		list1.add(4);
-		list1.add(8);
-		list1.add(12);
-		list1.add(22);
-		list1.add(25);
-		list1.add(30);
-		list1.print();
+		System.out.println(list.isPalindrome());
+//		LinkedList list1 = new LinkedList();
+//
+//		list1.add(4);
+//		list1.add(8);
+//		list1.add(12);
+//		list1.add(22);
+//		list1.add(25);
+//		list1.add(30);
+//		list1.print();
+//
+//		Node head = Exaples.sortTWoList(list.head, list1.head);
+//		list.print(head);
 
-		Node head=Exaples.sortTWoList(list.head,list1.head);
-		list.print(head);
-		
 //		list.print();
 //		list.remove(18);
 //		list.remove(7);
