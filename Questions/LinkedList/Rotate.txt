@@ -1,0 +1,15 @@
+public ListNode rotateRight(ListNode head, int k) {
+    if(head==null) return null;
+    if(k == 0){
+        return head;
+    }
+    ListNode slow=head,fast=head;
+    while(k>0 && fast!=null && fast.next !=null) {
+        slow=slow.next;
+        fast=fast.next.next;   
+    }
+    if(fast==null){
+        
+    }
+
+}

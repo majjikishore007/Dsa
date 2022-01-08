@@ -1,0 +1,28 @@
+function flatten(ListNode head){
+    if(head==null) {
+        return null;
+    }
+    Node current = head;
+    while(curr!=null) {
+        if(current.child!=null) {
+            Node tail =find_tail(current.child);
+            
+            if(current.next!= null){
+                current.next.prev = tail;
+            }
+            tail.next = current.next;
+            current.next = current.child;
+            current.child.prev = current;
+            current.child=null;
+        }
+        current=current.next;
+    }
+    return head;
+}
+
+function find_tail(Node node) {
+    while(node.next!=null) {
+        node = node.next;
+    }
+    return node;
+}
