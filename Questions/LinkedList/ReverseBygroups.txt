@@ -1,0 +1,24 @@
+  public static Node reverse(Node node, int k){
+
+      // idea is that go on reversing until k elements and if element exits after this 
+      //then call the same function 
+
+      Node curr=node,prev=null,fut=null;
+
+      int count=0;
+
+      while(curr !=null && count < k){
+        
+          //reverse logic 
+            fut = cur.next;
+            curr.next = prev;
+            prev = curr;
+            curr = fut;
+            count++;
+      }
+        if(fut!=null){
+            node.next=reverse(fut,k);     
+        }
+
+        return prev;
+    }
