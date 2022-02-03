@@ -1,28 +1,33 @@
 package basics;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 public class Sample {
+	static int ans=0;
+	public static void getRev(int n) {
+		if(n==0) {
+			return;
+		}
+		int rem=n%10;
+		ans=rem+(ans*10);
+		
+		getRev(n/10);
+	}
+	
+	public static int method2(int num,int rev) {
+		
+			if(num==0) {
+				return rev;
+			}		
+			rev=(num%10)+(rev*10);
+			
+		return method2(num/10, rev);
+	}
+	public static int getRev2(int n) {
+		int rev=0;
+		return method2(n, rev);
+	}
 	public static void main(String[] args) {
-		List<String> inputByLine = new ArrayList<String>();
-		List<Integer> list = new LinkedList<Integer>();
-		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-
-		for (String s : inputByLine) {
-			int i = Integer.parseInt(s);
-			if (map.containsKey(i)) {
-				map.put(i, map.get(i) + 1);
-			} else {
-				map.put(i, 1);
-			}
-		}
-
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-//			entry.getKey()
-		}
+		
+		System.out.println(getRev2(1234));
+//		System.out.println("trail  ::::"+(3>>2));
 	}
 }
