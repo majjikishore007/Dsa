@@ -1,0 +1,40 @@
+The approach is 
+
+_ _ _ _
+
+There are 3 places and we have to find the nuber of ways we can permutate the elements
+
+
+3ways 2ways 1way
+
+the number of permutations possible are n! 
+
+class Solution {
+      List<String>list=new ArrayList<>();
+    public List<String> find_permutation(String S) {
+        // Code here
+        String res="";
+         helper(S,res);
+        return list;
+    }
+    public void helper(String s,String ans){
+        if(s.length()==0){
+            list.add(ans);
+            return;
+        }
+    
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            
+            String left=s.substring(0,i);
+            String right=s.substring(i+1);
+            
+            String res=left+right;
+            
+            helper(res,ans+ch);
+        }
+        
+        
+        
+    }
+}

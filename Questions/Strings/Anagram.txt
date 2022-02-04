@@ -1,0 +1,23 @@
+class Solution(object):
+    def isAnagram(self, A, B):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        if (len(A) != len(B)):
+            return False
+        
+        a=[]
+        
+        for i in A:
+            a.append(i)
+        
+        for i in B:
+            if i in a:
+                a.remove(i)
+            else:
+                return False
+        if(len(a)>0):
+            return False
+        return True
