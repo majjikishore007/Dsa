@@ -1,0 +1,23 @@
+class Solution:
+	def getMin(self, a, b, c):
+		return min(a, b, c)
+
+	def helper(self, s, si, t, ti):
+		if si <= 0:
+			return ti
+		if ti <= 0:
+			return si
+		if s[si] == t[ti]:
+			return helper(s, si-1, t, ti-1)
+		return 1 + self.getMin(self.helper(s, si-1, t, ti), self.helper(s, si, t, ti-1), self.helper(s, si-1, t, ti-1))
+
+	def editDistance(self, s, t):
+		print("hello word")
+		return self.helper(s, len(s)-1, t, len(t)-1)
+
+
+if __name__ == '__main__':
+	s = Solution()
+	print(s)
+	ans = s.editDistance("gfg,gfg")
+	print(ans)
