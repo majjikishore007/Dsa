@@ -1,5 +1,7 @@
 package basics;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Solution {
@@ -39,7 +41,14 @@ public class Solution {
 		}
 		return sum;
 	}
+	public void obtain() {
+		Queue<String> pq = new PriorityQueue<>();
 
+		pq.add("Geeks");
+		pq.add("For");
+		pq.add("Geeks");
+    
+	}
 	public static void main(String[] args) {
 		try {
 			Scanner sc = new Scanner(System.in);
