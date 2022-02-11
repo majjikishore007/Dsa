@@ -1,87 +1,22 @@
 package basics;
-// Following program is a Java implementation
-// of Rabin Karp Algorithm given in the CLRS book
+class Main1 {
+	static String integerToRoman(int num) {
+		// add your logic here
+		String m[] = new String[] { "", "M", "MM", "MMM" ,"MMMM"};
+		String c[] = new String[] { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM " };
+		String x[] = new String[] { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+		String i[] = new String[] { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
-public class Main1
-{
-	// d is the number of characters in the input alphabet
-	public final static int d = 256;
-	
-	/* pat -> pattern
-		txt -> text
-		q -> A prime number
-	*/
-	static void search(String pat, String txt, int q)
-	{
-		int M = pat.length();
-		int N = txt.length();
-		int i, j;
-		int p = 0; // hash value for pattern
-		int t = 0; // hash value for txt
-		int h = 1;
-	
-		// The value of h would be "pow(d, M-1)%q"
-		
-		for (i = 1; i < M; i++) {
-				h*=(int) (( (Math.pow(d, i)))%q);
-		}
-	
-		// Calculate the hash value of pattern and first
-		// window of text
-		for (i = 0; i < M; i++)
-		{	
-			System.out.println("p"+p);
-			p = (d*p + pat.charAt(i))%q;
-			t = (d*t + txt.charAt(i))%q;
-		}
-	
-		// Slide the pattern over text one by one
-		for (i = 0; i <= N - M; i++)
-		{
-	
-			// Check the hash values of current window of text
-			// and pattern. If the hash values match then only
-			// check for characters on by one
-			if ( p == t )
-			{
-				/* Check for characters one by one */
-				for (j = 0; j < M; j++)
-				{
-					if (txt.charAt(i+j) != pat.charAt(j))
-						break;
-				}
-	
-				// if p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1]
-				if (j == M)
-					System.out.println("Pattern found at index " + i);
-			}
-	
-			// Calculate hash value for next window of text: Remove
-			// leading digit, add trailing digit
-			if ( i < N-M )
-			{
-				t = (d*(t - txt.charAt(i)*h) + txt.charAt(i+M))%q;
-	
-				// We might get negative value of t, converting it
-				// to positive
-				if (t < 0)
-				t = (t + q);
-			}
-		}
+		String th = m[num / 1000];
+		String hu = c[(num % 1000) / 100];
+		String te = x[(num % 100)/10];
+		String on = i[num % 10];
+			
+		String ans =th + hu + te + on;
+		return ans;
 	}
 	
-	/* Driver Code */
-	public static void main(String[] args)
-	{
-		String txt = "GEEKS FOR GEEKS";
-		String pat = "GEEKS";
-		
-		// A prime number
-		int q = 101;
-	
-		// Function Call
-		search(pat, txt, q);
+	public static void main(String[] args) {
+			System.out.println(integerToRoman(3610));
 	}
 }
-
-// This code is contributed by nuclode

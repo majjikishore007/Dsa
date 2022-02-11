@@ -21,3 +21,25 @@ class Solution(object):
         if(len(a)>0):
             return False
         return True
+
+boolean areAnagrams(String A, String B) {
+	    // add your logic here
+		if(A.length()!=B.length()){
+			return false;
+		}
+		
+		int arr[]=new int [26];
+		
+		for (char c:A.toCharArray()){
+			arr[c-'a']+=1;
+		}
+		for (char c:B.toCharArray()){
+			arr[c-'a']-=1;
+		}
+		for(int i:arr){
+			if(i!=0){
+				return false;
+			}
+		}
+		return true;
+	}
