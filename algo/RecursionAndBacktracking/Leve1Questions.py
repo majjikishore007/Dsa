@@ -79,8 +79,43 @@ def reverse_helper(n, rev):
 
 
 def reverse_method2(n: int):
-    digits = math.log10()
-    return reverse_helper_method2(n)
+    digits = int(math.log10(n))+1
+    return reverse_helper_method2(n, digits)
 
 
-print(reverse(12345))
+def reverse_helper_method2(n: int, digits: int):
+    if n % 10 == 0:
+        return n
+    rem = n % 10
+    return (rem*int(math.pow(10, digits-1)))+reverse_helper_method2(n//10, digits-1)
+
+#10.palindrome
+
+
+def is_palindrome(n: int):
+    if n == reverse_method2(n):
+        return True
+    return False
+
+#11.count number of 0s in a number
+
+
+def count_0(n: int):
+    if n == 0:
+        return 0
+    if n % 10 == 0:
+        return 1+count_0(n//10)
+    return 0+count_0(n//10)
+
+#12.number of steps to make number 0
+
+
+def numberOfSteps(self, num):
+    if num == 0:
+        return 0
+    if num % 2 == 0:
+        return 1+self.numberOfSteps(num//2)
+    else:
+        return 1+self.numberOfSteps(num-1)
+
+print(count_0(1010000000))
