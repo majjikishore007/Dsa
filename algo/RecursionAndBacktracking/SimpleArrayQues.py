@@ -1,17 +1,34 @@
-#1.find if the array is sorted or not
+# 1.find if the array is sorted or not
 
 def is_sorted(array):
-    print(array)
     index = 1
-    return helper(array, index, len(array))
+    print(len(array))
+    L = len(array)
+
+    return helper(array, index, L)
 
 
-def helper(array, index, len):
-    if index == len:
+def helper(array, index, L):
+    if index == L:
         return True
-    return (array[index-1] <= array[index]) and helper(array, index+1, len(array))
+    return int(array[index-1]) <= int(array[index]) and helper(array, index+1, L)
+
+# 2.Linear Search with recuersion
 
 
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+def find(array, key):
+    index = 0
+    return helper_find(array, key, index)
 
-print(is_sorted([1, 2, 3]))
+
+def helper_find(array, key, index):
+    if index == len(array):
+        return -1
+    if (array[index]) == key:
+        return index
+
+    return helper_find(array, key, index+1)
+
+
+array = [1, 89, 23]
+print(find(array, 3))
