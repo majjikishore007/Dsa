@@ -48,5 +48,30 @@ def helper_get_sebsequence_list(ans, string):
     return left
 
 
-string = "abc"
-print(get_sebsequence(string))
+'''
+Itrative approach to the subsets problem
+
+'''
+
+
+def get_sebsequence_iterative(string):
+    res = [i for i in string]
+    return iterative_helper(res)
+
+
+def iterative_helper(res):
+    outer = []
+    outer.append([])
+    for i in res:
+        n = len(outer)
+        inner = []
+        for j in range(n):
+            inner = list(outer[j])
+            inner.append(i)
+            outer.append(inner)
+
+    return outer
+
+
+string = "aaa"
+print(get_sebsequence_iterative(string))
