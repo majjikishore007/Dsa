@@ -1,0 +1,24 @@
+def pre(Node root):
+    if root is none:
+        return
+    print(root.data)
+    pre(root.left)
+    pre(root.right)
+
+function pre_iterative(Node root){
+    if (root==null){
+        return;
+    }
+    Stack<Node>stack=new Stack<Node>();
+    stack.push(root);
+
+    while (!stack.isEmpty()){
+        print(root.data)
+        
+    }
+    
+
+
+
+}
+

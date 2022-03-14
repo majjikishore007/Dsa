@@ -1,0 +1,18 @@
+class Solution {
+	int max=0;
+	int getDiameter(Node root) {
+    	// add your logic here
+		helper(root);
+		return max;
+	}
+	int helper(Node root){
+
+		if(root == null){
+			return 0;
+		}	
+		int left=helper(root.left);
+		int right=helper(root.right);
+		max=Math.max(max,left+right);
+		return 1 + Math.max(left, right);
+	}
+}

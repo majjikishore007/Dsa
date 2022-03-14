@@ -24,8 +24,8 @@ public class Tree {
 	// Traversals
 	// 1.pre order ( Curr , Left and Right)
 	// Time complexity O(N)
-	//Space O(N) stack space
-	
+	// Space O(N) stack space
+
 	public void preOrder(TreeNode root) {
 		if (root == null) {
 			return;
@@ -48,82 +48,88 @@ public class Tree {
 
 			if (curr.right != null) {
 				stack.push(curr.right);
+
 			}
 			if (curr.left != null) {
-				stack.push(curr.left);
 
+				stack.push(curr.left);
 			}
 		}
 
 	}
 
-		//	postOder (left,right,curr)
-		// Time complexity O(N)
-		//Space O(N) stack space
+	// postOder (left,right,curr)
+	// Time complexity O(N)
+	// Space O(N) stack space
 	public void postOrder(TreeNode root) {
-		if(root==null) {
+		if (root == null) {
 			return;
 		}
 		postOrder(root.left);
 		postOrder(root.right);
 		System.out.println(root.data);
 	}
-	//TODO:
+
+	// TODO:
 	public void postOrderIterative(TreeNode root) {
-		if (root==null) {
+		if (root == null) {
 			return;
 		}
-		Stack<TreeNode>stack=new Stack<>();
+		Stack<TreeNode> stack = new Stack<>();
 		stack.push(root);
-		TreeNode prev=null;
-		while(!stack.isEmpty()) {
-			TreeNode curr=stack.peek();
-			if (prev==null|| prev.left ==null||prev.right==null) {
-				if (curr.left!=null) {
+		TreeNode prev = null;
+		while (!stack.isEmpty()) {
+			TreeNode curr = stack.peek();
+			if (prev == null || prev.left == curr || prev.right == curr) {
+				if (curr.left != null) {
 					stack.push(curr.left);
 				}
-				else if (curr.right!=null) {
+				else if (curr.right != null) {
 					stack.push(curr.right);
 				}
+			} else if (curr.left == prev) {
+				if (curr.right != null) {
+					stack.push(curr.right);
+				}
+			} else {
+				stack.pop();
+				System.out.println(curr.data);
 			}
-			else if (curr.left==prev) {
-				
-			}
-			
+			prev = curr;
 		}
-	
-	
-		
+
 	}
-	
+
 	// left curr,right
 	public void inOrder(TreeNode root) {
-		if(root==null) {
+		if (root == null) {
 			return;
 		}
 		inOrder(root.left);
 		System.out.println(root.data);
 		inOrder(root.right);
 	}
+
 	public void inOrderIterative(TreeNode root) {
-		if (root==null) {
+		if (root == null) {
 			return;
 		}
-		Stack<TreeNode>stack=new Stack<>();
-		TreeNode curr=root;
-		
-		while(curr!=null||!stack.isEmpty()) {
-			while(curr!=null) {
+		Stack<TreeNode> stack = new Stack<>();
+		TreeNode curr = root;
+
+		while (curr != null || !stack.isEmpty()) {
+			while (curr != null) {
 				stack.push(curr);
-				curr=curr.left;
+				curr = curr.left;
 			}
-			curr=stack.pop();
+			curr = stack.pop();
 			System.out.println(curr.data);
-			curr=curr.right;
-	
+			curr = curr.right;
+
 		}
-		
+
 	}
+
 	public static void main(String[] args) {
 		Tree tree = new Tree(1);
 		tree.root.left = new TreeNode(2);
@@ -132,6 +138,6 @@ public class Tree {
 		tree.root.left.right = new TreeNode(5);
 		tree.root.right.left = new TreeNode(6);
 
-		tree.inOrderIterative(tree.root);
+		tree.postOrderIterative(tree.root);
 	}
 }
