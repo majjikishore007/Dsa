@@ -1,5 +1,7 @@
 package trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 class TreeNode {
@@ -69,7 +71,24 @@ public class Tree {
 		postOrder(root.right);
 		System.out.println(root.data);
 	}
-
+	public void levelOrder(TreeNode root) {
+		if(root==null) {
+			return;
+		}
+		Queue<TreeNode>que=new LinkedList<TreeNode>();
+		que.add(root);
+		while(!que.isEmpty()) {
+			TreeNode curr= que.poll();
+			System.out.println(curr.data);
+			if(curr.left!=null) {
+				que.add(curr.left);
+			}
+			if(curr.right!=null) {
+				que.add(curr.right);
+			}
+		}
+		
+	}
 	// TODO:
 	public void postOrderIterative(TreeNode root) {
 		if (root == null) {
@@ -138,6 +157,6 @@ public class Tree {
 		tree.root.left.right = new TreeNode(5);
 		tree.root.right.left = new TreeNode(6);
 
-		tree.postOrderIterative(tree.root);
+		tree.levelOrder(tree.root);
 	}
 }
