@@ -1,0 +1,25 @@
+//using recursion
+
+class Solution {
+	Node constructTree(int[] preorder, int[] inorder) {
+    	// add your logic here
+        return helper(0,0,inorder.length-1,preorder,inorder);
+
+	}
+    public Node helper(int pStart,int iStart,int iEnd,int []preorder,int []inorder) {
+        if(pStart> preorder.length-1|| iStart>iEnd){
+            return null;
+        }
+        Node root = new Node(preorder[pStart]);
+        int index=0;
+        for(int i  = 0; i < inorder.length; i++){
+            if(preorder[pStart]==inorder[i]){
+                index = i;
+                break;
+            }
+        }
+        root.left=helper(pStart+1,iStart,index-1,preorder,inorder);
+        root.right=helper(pStart + index-iStart-1 ,iStart,index+1,preorder,inorder);
+        return root;
+    }
+}
