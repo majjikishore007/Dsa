@@ -1,4 +1,0 @@
-1, if (n < 3) return 0;
-2, if cnt of 1s is not dividable by 3, return 0;
-3, if no 1s, you may select any 2 slots btwn 0s to divide, just return num of combinations, select 2 slots from n - 1 slots;
-4, otherwise, you may select any 2 slots btwn s1 and s2, or any 2 slots btwn s3 and s2; just count cnt of 0s bwtn them respectively, then ++ to make slots;
