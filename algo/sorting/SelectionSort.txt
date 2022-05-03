@@ -1,0 +1,32 @@
+It is In-place sorting (Doesn't uses extra memory)
+
+
+Algo:
+
+1.find the minium element
+2.swap with the current position 
+3.repeat the steps for the entire array
+
+function SelectionSort(int arr[]){
+
+    int  N=arr.length,min;
+
+    for (int i=0;i<N;i++){
+        min=i
+    
+        for(int j=i+1;j<N-1;j++){
+            if (arr[j]<arr[min]){
+                min=j
+            }
+        }
+        int temp=arr[min];
+        arr[min]=arr[i];
+        arr[i]=temp;
+    }
+
+
+}
+
+Time Complexity : O(N^2)
+Space Comlexity :O(1)
+BestCase:O(N)

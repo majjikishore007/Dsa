@@ -1,0 +1,25 @@
+public ListNode rotateRight(ListNode head, int k) {
+    if(head==null) return null;
+    ListNode dummy =new ListNode(0);
+	dummy.next=head;
+	
+	int len=0;
+
+	ListNode slow=dummy,fast=dummy;
+	//getting the length
+	while(fast.next!=null){
+		len+=1;
+		fast=fast.next;
+	}
+	
+	//moving the slow pointer to the len-(k%len) postion and then just rotateRight
+	count=(len-(K%len))
+	while(count-->0){
+		slow=slow.next;
+	}
+	fast.next=dummy.next;
+	dummy.next=slow.next;
+	slow.next=null;
+
+	return dummy.next;
+}	

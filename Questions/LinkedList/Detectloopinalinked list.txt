@@ -1,0 +1,46 @@
+//approach 1
+//using hash tables
+
+
+function boolean detectloopinalinked(Node head){
+    HashSet<Node>set = new HashSet<>();
+
+    Node temp = head;
+
+    while(temp!=null){
+        
+        if(set.contains(temp)){
+           return true; 
+        }
+        set.add(temp);
+        temp = temp.next;
+    }
+    return false;
+}
+
+Time complexity: O(N)
+Space complexity: O(N)
+
+
+//approach 2
+
+Floyd’s slow and fast pointers approach 
+
+
+make two pointers
+slow and fast pointers
+
+function boolean detectTheCycle(Node head){
+    Node slow=head;
+    Node fast=head;
+
+    while(slow !=null && fast !=null && fast.next !=null){
+
+        if(slow.data=fast.data){
+            return true;
+        }
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return false;
+}

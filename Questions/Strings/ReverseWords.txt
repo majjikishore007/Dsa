@@ -1,0 +1,8 @@
+Split the String and reverse the words  
+ 
+ def reverseWords(self,S):
+    new_S=S.split(".")
+    
+    for i in range(n-1,0,):
+        S=S+new_S[i]
+    return S

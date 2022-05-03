@@ -1,0 +1,36 @@
+//Minimize the Heights II  
+ approcah
+ we have find the minium difference between the min and max
+so  first we need to sort the array to get the initial differce 
+that is 
+int arr[]; arr lenght=n
+// after sorting the array 
+max=arr[n-1];
+min=arr[0];
+res=max-min;
+// after
+now we need to keep track of the min and max while iterating the arry by adding the given k value to the current element
+[ 1, 5 ,8,10 ]
+
+as the min is initialy the arr[0];
+and the max is initialy the arr[n-1];
+ 
+// finding the updated min
+    it will in the range of i in 1 to n-1;
+
+// finding the max 
+    it will in the range of i 0 to n-2;
+
+
+that is 
+if(arr[i]>=k) then 
+// update the min and max
+
+min is minof(arr[i]-k,arr[0]+k);
+max is maxof(arr[i-1]+k,arr[n-1]-k);
+after we get the min and max update
+we chech for the result 
+res=min(res,max-min);
+
+else we continue not to update the result;
+

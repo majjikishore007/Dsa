@@ -1,0 +1,37 @@
+idea is using a queue that
+
+
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+       List<List<Integer>> ans=new List<List<Integer>>();
+       if(root==null){
+           return ans;
+       }
+       Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
+        boolean flag = true;
+        while(!q.isEmpty()){
+            List<Integer> temp=new LinkedList<Integer>();
+            for(int i=0;i<q.size();i++){
+            TreeNode current = q.poll();
+                if(flag){
+                    temp.add(curr.val);
+                }else {
+                    temp.addFirst(curr.val);
+                }
+
+                if(curr.left!=null){
+                    q.add(curr.left);
+                }
+                if(cur.right!=null){
+                    q.add(curr.right);
+                }   
+            }
+            q.add(temp);
+            flag=!flag;
+
+        }
+        return ans;
+
+    }
+}

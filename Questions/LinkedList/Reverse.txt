@@ -1,0 +1,65 @@
+function reverseList(ListNode head) {
+    if(head==null) {
+        return null;
+    }
+    ListNode curr,prev,fu;
+
+    curr = head;
+
+    while(curr.next != null) {
+        fu = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr=fu;
+    }
+    curr.next = prev;
+    return curr;
+
+}
+
+// Time complexity: O(N)
+//Space complexity: O(1)
+
+/**
+*Given the head of a singly linked list and two integers 
+*left and right where left <= right, reverse the nodes of the list from position left to 
+*position right, and return the reversed list.
+*/
+Input
+List (1->2->3->4->5->6->7->8)
+left =2;
+right =5;
+
+Output (1->5->4->3->2->6->7->8)
+
+
+
+//Idead 
+
+The idea is simple just
+1.add a dummy node to the to keep the reference of the prev of left 
+2.after that just simplely bring the left.next node to prev.next and join the prev.next to the next node.next
+
+ public ListNode reverseBetween(ListNode head, int left, int right) {
+    //1 make the dummy node 
+
+    ListNode dummy = new ListNode(0);
+    dummy.next=head;
+    ListNode prev = dummy;
+    ListNode M=head;
+
+    for(int i=1;<left;i++){
+        prev=prev.next;
+    }
+    M=prev.next;
+
+    for(int i=1;<right-left;i++){
+        ListNode curr=M.next;
+        M.next=curr.next;
+
+        curr.next=prev.next;
+        prev.next=curr;
+    }
+    return dummy.next;
+ }
+
