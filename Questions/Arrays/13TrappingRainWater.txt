@@ -1,0 +1,19 @@
+ static long trappingWater(int arr[], int n) { 
+        // Your code here
+        long lMax=0,rMax=0,i=0,j=n-1,res=0;
+
+        while(i<j){
+            if(arr[i]<arr[j]){
+                lMax=Math.max(lMax,arr[i]);
+                res+=lmax-arr[i];
+                i++;
+            }else{
+                rMax=Math.max(rMax,arr[j]);
+                res+=rMax-arr[j];
+                j--;
+            }
+
+        }
+        return res;
+
+    } 

@@ -1,0 +1,35 @@
+// approach
+
+1.make a map for the standard romanas number
+2.compare the standard romanas with string from backwards 
+3.declare two variables
+    p and sum 
+    p will store the high value 
+        for example 9 in romanas is IX
+            the right most is the highest value and right which is (X=10)
+            amd right most char are subtracted with it (I=1, IX=10-1)
+
+class Solution:
+	def romanToInt(self, s: str) -> int:
+		# add your logic here
+		value = {
+			'M': 1000,
+			'D': 500,
+			'C': 100,
+			'L': 50,
+			'X': 10,
+			'V': 5,
+			'I': 1
+    	}
+		n=len(s)
+		# iterating from backwards directions
+		p=0
+		ans=0
+		for i in range(n-1,-1,-1):
+			if(value[s[i]]>=p):
+				ans+=value[s[i]]
+			else:
+				ans-=value[s[i]]
+			p=value[s[i]]
+		return ans
+			

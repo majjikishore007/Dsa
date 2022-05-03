@@ -1,0 +1,22 @@
+def split(s):
+    l = 0
+    m = 0
+    count = 0
+    for i in s:
+        if i == '0':
+            count += 1
+            l += 1
+        if i == '1':
+            count -= 1
+            l += 1
+        if count == 0:
+            m += 1
+            l = 0
+
+    if count != 0:
+        return -1
+    return m
+
+
+print("::::::::::::")
+print(split("01001101"))

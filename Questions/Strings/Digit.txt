@@ -1,0 +1,25 @@
+class Solution:
+    def helper(self, s, m, t, n):
+        if m == 0:
+            return n
+        if n == 0:
+            return m
+
+        if s[m-1] == t[n-1]:
+            return self.helper(s, m-1, t, n-1)
+        return 1+(min(self.helper(s, m-1, t, n), self.helper(s, m, t, n-1), self.helper(s, m-1, t, n-1)))
+
+    def editDistance(self, s, t):
+	# Code here]
+        return self.helper(s, len(s), t, len(t))
+
+
+#  Driver Code Starts
+if __name__ == '__main__':
+	T = int(input())
+	for i in range(T):
+		s, t = input().split()
+		ob = Solution()
+		ans = ob.editDistance(s, t)
+		print(ans)
+# } Driver Code Ends

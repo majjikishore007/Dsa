@@ -1,0 +1,41 @@
+public int[] nextLargerNodes(ListNode head) {
+        
+        if(head ==null){
+            return null;
+        }
+        
+        int N=0;
+        
+        ListNode temp=head;
+        while(temp!=null){
+            N++;
+            temp=temp.next;
+        }
+        
+        int arr[] =new int [N];
+        
+        temp=head;
+        int i=0;
+        while(temp!=null){
+            arr[i++]=temp.val;
+            temp=temp.next;
+        }
+        int max=arr[N-1];
+        
+        for( i=0;i<N;i++){
+            int x=arr[i];
+            for(int j=i+1;j<N;j++){
+                if(arr[j]>arr[i]){
+                    arr[i]=arr[j];
+                    break;
+                }
+            }
+            if(arr[i]==x){
+                arr[i]=0;
+            }
+        }
+        arr[N-1]=0;
+        
+        
+        return arr;
+    }

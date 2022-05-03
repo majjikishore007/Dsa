@@ -1,0 +1,30 @@
+// binearySearch
+
+funcion binearySearch(int []arr,int key){
+    int low=0.high=arr.length;
+    binearySearch_helper(arr,low,high,key);
+}
+
+funcion binearySearch_helper(int []arr,int low,int high,int key){
+        while(low<high){
+            int mid=(low+high)/2;
+            if(arr[mid]==key){
+            return mid;
+            }
+            if(arr[mid]<key){
+                low=mid+1;
+            }else{
+                high=mid
+            }
+        }
+}
+
+/*
+    time complexity: O(log n)
+    space complexity: O(1) for iterative approach
+    else  space complexity: O(N) for recursive approach
+     because the recursive approach uses stack memory
+ */
+    
+
+

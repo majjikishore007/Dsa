@@ -1,0 +1,19 @@
+1.gcd
+fun (a,b){
+    if b is 0
+        return 0
+    return (b,a%b)
+}
+
+2.return kth element after merging to sorted arrays
+// approach 
+    merge the arrays
+    return the kth element after merging
+
+3.set all the colums and rows to 0 
+
+approach 
+if we find any 0 
+set the element to -1
+after completing all the elements
+replace all the -1 with 0s

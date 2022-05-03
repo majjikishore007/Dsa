@@ -1,0 +1,57 @@
+class Solution
+{
+    ArrayList<int> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        ArrayList<int> result =new ArrayList<>();
+
+        int i=0,j=0,k=0;
+        int prev1, prev2, prev3;
+        // Initialize prev1, prev2,
+        // prev3 with INT_MIN
+        
+        prev1 = prev2 = prev3 = Integer.MIN_VALUE;
+
+        while(i<n1 && j<n2 && k<n3)
+        {
+
+            // for skiping the duplicates in the array
+            while(i<n1 && A[i]==prev1){
+                i++;
+            }
+            while(j<n2 && B[j]==prev2){
+                j++;
+            }
+            while(k<n3 && C[k]==prev3){
+                k++;
+            }
+
+            if(i<n1 && j< n2 && k<n3>){
+                //checking for commonElement
+                if(A[i]==B[j] && B[j]==C[k]){
+                    result.add(A[i]);
+                    prev1=A[i];
+                    prev2=B[j];
+                    prev3=C[k];
+                    i++;
+                    j++;
+                    k++;  
+                }
+                // if A[i] is smallest, then
+                else if(A[i]<B[j]){
+                    prev1=A[i];
+                    i++;
+                }
+                else if(B[j]<C[k]){
+                    prev2=B[j];
+                    j++;
+                }   
+                else {
+                    prev3=C[k];
+                    k++;
+                }
+            }
+
+         }
+         return result;
+    }
+}

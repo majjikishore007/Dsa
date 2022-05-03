@@ -1,0 +1,61 @@
+Binary Tree Postorder Traversal
+Done 
+
+
+
+
+Restore IP Addresses
+no
+Best Time to Buy and Sell Stock III
+no
+
+solution
+
+approach take a extra space  to store the prices
+
+
+  public int maxProfit(int[] arr) {
+    int N=arr.length;    
+      int p=new int[N];
+      Arrays.fill(p,0);// filling all the values to 0s
+    
+    // now iterating from the last
+    int max=arr[N-1];
+
+    for (int i=N-1; i>=0; i--){
+        if (arr[i]>max){
+            max=arr[i];
+        }
+        p[i]=Math.max(p[i+1],max-arr[i]);
+    }
+    // now iterating  from the front
+
+    int min=arr[0];
+
+    for (int i=1; i<N; i--){
+        if(min>arr[i]){
+            min=arr[i];
+        }
+        p[i]=Math.max(p[i-1],arr[i]-p[i]);
+    }
+    return p[n-1];
+
+  }
+
+
+// method 2;
+
+
+taking the advantage of the question 
+
+
+public int maxProfit(int[] prices) {
+       int b1 = Integer.MIN_VALUE; s1 = 0, b2 = Integer.MIN_VALUE; s2 = 0;
+        for (int p : prices) {
+            b1 = max(b1, -p);
+            s1 = max(s1, b1 + p);
+            b2 = max(b2, s1 - p);
+            s2 = max(s2, b2 + p);
+        }
+        return s2; 
+}

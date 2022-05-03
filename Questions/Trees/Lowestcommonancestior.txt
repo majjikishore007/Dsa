@@ -1,0 +1,19 @@
+/****************
+
+the approach is simple and
+
+The ancestor mean the parent or grand parent of the nodes is the
+
+given p and q 
+
+if root.val == p || root.val == q
+    then either p or q will be the ancestor of the nodes 
+
+else
+
+    serach for the p and q in left and right
+
+    if (p || q)  found in left  and the right(p || q  ) found in right
+        then root will be the ancestor of the nodes
+    if left == null then ans will be the right of the
+    if right == null then ans will be the left of 

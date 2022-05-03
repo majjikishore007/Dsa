@@ -1,0 +1,23 @@
+# [4,5,6,1,2,3]
+
+function rotationArrayHelper(int arr[],int low ,int high){
+    // corner case
+    if(high<low){
+        return "No match found"
+    }
+
+    if(mid <high && arr[mid+1]<arr[mid]){
+        return mid+1;
+    }
+    if( mid>low &&   arr[mid-1]>arr[mid]){
+        return mid;
+    }
+
+    if(arr[high]>arr[mid]){
+        // move to problem part
+        // left part
+        rotationArrayHelper(arr,low,mid-1);
+    }
+    return rotationArrayHelper(arr,mid+1,high);
+
+}
