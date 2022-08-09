@@ -1,6 +1,0 @@
-
-array
--------------------------------------------------------
-https://leetcode.com/problems/maximum-units-on-a-truck
-https://leetcode.com/problems/baseball-game
-https://leetcode.com/problems/maximum-average-pass-ratio
